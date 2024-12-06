@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries>
+  <input>
+<text>
+<![CDATA[
+Hier ist ein weiterer Text,
+der auch über mehrere Zeilen geht
+und in CDATA eingebettet ist.
+]]>
+</text>
+  </input>
+</entries>
