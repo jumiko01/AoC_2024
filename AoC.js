@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 			inArrRight.push( parseInt(temp[1]) );
 		}
 
-		console.log(inArrLeft);
-		console.log(inArrRight);
+//		console.log(inArrLeft);
+//		console.log(inArrRight);
 
 		inArrLeft.sort(function(a, b) {
 			return a - b;
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 			return a - b;
 		});
 
-		console.log(inArrLeft);
-		console.log(inArrRight);
+//		console.log(inArrLeft);
+//		console.log(inArrRight);
   
 		var sum = 0;
 		for (var idx=0; idx<inArrLeft.length;  idx++)
@@ -78,33 +78,34 @@ document.addEventListener('DOMContentLoaded', async function() {
 		console.log("sum: "+ sum);	
 		document.getElementById("solution_1").innerHTML = "    Lösung: " + sum;
 
-		sum = 0;
-		for(let el of inArrLeft)
-		{	
-			console.log("el: " + el);
-			sum += el;
-		}
-		console.log("sum: "+ sum);	
-		
 		
 		// ––––––––
-
-		var input_2_lines = await readInput('input2.xml');
-		var round = 0;
-		for(let line of input_2_lines )
+		sum = 0;
+		for (var idx=0; idx<inArrLeft.length;  idx++)
 		{
-			round++;
-			console.log(round +": " + line);
+			//console.log("el: " + el);
+			let similarity = countSpecificElement(inArrRight, inArrLeft[idx]);
+//			console.log("similarity: " + similarity);
+			sum += inArrLeft[idx] * similarity;
+//			console.log("sum: " + sum);
 		}
-		document.getElementById("solution_2").innerHTML = "Lösung 2: " +	"hier muss Lösung 2 stehen ...";
+		console.log("sum: "+ sum);	
+		document.getElementById("solution_2").innerHTML = "Lösung 2: " + sum;
+
 	}
 	catch(error) {
         console.error('Fehler beim Einlesen der XML-Dateien:', error);
     }
 });
 
+function countSpecificElement(array, element) {
+    return array.filter(item => item === element).length;
+}
 
 
+////////////////////////////////////////////////////////////////////////
+///	READ INPUT	////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 async function readInput(InputFileName)
 {
 	try{
